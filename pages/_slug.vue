@@ -1,20 +1,17 @@
 <template>
-    <article>
-        <!-- <img :src="require(`~/assets/resources/${article.img}`)" alt="" class="main-article-image" /> -->
-        <h1 class="article-title">{{article.title}}</h1>
-        <p class="dateby">{{article.datetime}} · by {{article.author}}</p>
-        <img :src="require(`~/assets/resources/${article.img}`)" alt="" class="main-article-image" />
-        <nuxt-content :document="article" />
-        <!-- <Prevnext /> -->
+    <div class="related max-w-3xl mx-auto py-10 px-3 md:py-16">
+        <!-- <p class="text-lg text-gray-500 text-center mb-2">{{article.category}}</p> -->
+        <h1 class="mb-2 text-3xl md:text-4xl text-center font-semibold text-gray-700">{{article.title}}</h1>
+        <p class="text-lg text-gray-500 text-center">{{article.datetime}} · by {{article.author}}</p>
+        <img :src="require(`~/assets/resources/${article.img}`)" alt="" class="my-5 md:rounded-2xl md:my-10" />
+        <nuxt-content :document="article" class="prose max-w-3xl break-words"/>
 
         <Prevnext :prev="prev" :next="next" />
-    </article>
+    </div>
 </template>
 
 <script>
-// import Prevnext from '~/components/Prevnext.vue';
 export default {
-    // components: { Prevnext },
     async asyncData({ $content, params }) {
         const article = await $content('blog', params.slug)
         .fetch();
@@ -31,55 +28,4 @@ export default {
 </script>
 
 <style scpoed>
-    article {
-        display: block;
-        margin: 0 auto;
-        padding: 50px 30px;
-        max-width: 800px;
-    }
-    article h1 {
-        font-size: 2.5rem;
-        font-weight: 600;
-        margin: 2.3rem auto 0;
-        color: #333D4B;
-        text-align: center;
-    }
-    article .dateby{
-        font-weight: 500;
-        text-align: center;
-        margin: 1.4rem 0 2.5rem;
-    }
-    article .main-article-image{
-        margin: 2rem 0 5rem;
-    }
-    article h2{
-        font-size: 1.55rem;
-        margin: 1.5rem 0;
-        color: #333D4B;
-        font-weight: 500;
-    }
-    article h3 {
-        font-size: 1.3rem;
-        margin: 1.3rem 0 1.3rem;
-        color: #333D4B;
-        font-weight: 500;
-    }
-    article p {
-        font-weight: 300;
-        font-size: 1.15rem;
-        text-decoration: none;
-        color: #6B7684;
-        line-height: 1.8;
-        word-break: keep-all;
-    }
-    article img {
-        display: block;
-        max-width: 740px;
-        margin: 2rem auto;
-        box-sizing: border-box;
-        border-radius: 1rem;
-    }
-    article a {
-        text-decoration: none;
-    }
 </style>

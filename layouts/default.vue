@@ -7,7 +7,7 @@
 </template>
 
 <style>
-  @import url(../assets/css/reset.css);
+  /* @import url(../assets/css/reset.css); */
   @import url(../assets/css/fonts.css);
   * {
     margin: 0;
